@@ -1,17 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const mysql = require("mysql");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database:"crud"
-})
+const urlDB = 'mysql://${process.env.root}:${process.env.aACE21c-F3A36HEH3aC1bDC3DaBEDb-B@monorail.proxy.rlwy.net}:${process.env.10191}/${process.env.railway}'
+const db = mysql.createConnection(urlDB)
 
 app.get("/", (req, res) => {
     const sql = "SELECT * FROM student";

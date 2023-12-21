@@ -11,7 +11,7 @@ function UpdateStudent() {
     function handleSubmit(event){
         event.preventDefault();
         console.log("ID:", id); // Add this line to log the ID
-        axios.put('http://localhost:8081/update/'+id, {name, email})
+        axios.put('https://crud-backend-production-62ae.up.railway.app/update/'+id, {name, email})
         .then(res=> {
             console.log("Response Data:", res.data); // Log the response data
         navigate('/')

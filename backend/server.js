@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const urlDB = 'mysql://${process.env.root}:${process.env.aACE21c-F3A36HEH3aC1bDC3DaBEDb-B@monorail.proxy.rlwy.net}:${process.env.10191}/${process.env.railway}'
+const urlDB = 'mysql://root:aACE21c-F3A36HEH3aC1bDC3DaBEDb-B@monorail.proxy.rlwy.net:10191/railway'
 const db = mysql.createConnection(urlDB)
 
 app.get("/", (req, res) => {

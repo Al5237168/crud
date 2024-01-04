@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 function Student(){
     const [student, setStudent] = useState([])
     useEffect(()=>{
-        axios.get('https://crud-backend-production-62ae.up.railway.app/' ,{ withCredentials: true })
+        axios.get('http://localhost:8081/' ,{ withCredentials: false })
         .then(res => setStudent(res.data))
         .catch(err => console.log("Error-axios",err));
       }, [])
 
       const handleDelete = async (id) =>{
         try{
-          await axios.delete('https://crud-backend-production-62ae.up.railway.app/student/'+id)
+          await axios.delete('http://localhost:8081/student/'+id)
           window.location.reload()
         }catch(err){
           console.log(err);

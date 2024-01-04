@@ -5,21 +5,17 @@ const mysql = require("mysql");
 
 const app = express();
 app.use(express.json());
-const corsOptions = {
-    origin: 'https://roaring-mandazi-dacf93.netlify.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };
-app.use(cors(corsOptions));
+app.use(cors());
 
-const urlDB = 'mysql://root:aACE21c-F3A36HEH3aC1bDC3DaBEDb-B@monorail.proxy.rlwy.net:10191/railway'
-const db = mysql.createConnection(urlDB)
+// const urlDB = 'mysql://root:aACE21c-F3A36HEH3aC1bDC3DaBEDb-B@monorail.proxy.rlwy.net:10191/railway'
+const db = mysql.createConnection({
+    host: "localhost",
+    user:"root",
+    password:"",
+    database:"crud"
+})
 
 app.get("/", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://roaring-mandazi-dacf93.netlify.app");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     const sql = "SELECT * FROM student";
     db.query(sql, (err, data) =>{
         if(err) return res.json("Error0", err);
